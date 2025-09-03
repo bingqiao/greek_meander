@@ -1,0 +1,7 @@
+venv/
+.vscode
+__pycache__
+
+# Build artifacts
+dist/
+*.egg-info/

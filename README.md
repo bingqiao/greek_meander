@@ -67,6 +67,7 @@ meander rect [options]
 #### Rectangle Example
 
 To run the python script directly
+
 ```bash
 python meander.py --stroke-color "#AB8E0E" --stroke-opacity 0.7 rect --width 24 --height 13 --size 10
 ```
@@ -93,9 +94,16 @@ meander circle [options]
 | `--radius` | int | 300 | The radius of the circle. |
 
 #### Circle Example
+To run the python script directly
 
 ```bash
-meander --stroke-color black --file images/meander_circle circle
+python meander.py --stroke-color green --file images/meander_circle circle
+```
+
+Or if you installed `greak_meander`
+
+```bash
+meander --stroke-color green --file images/meander_circle circle
 ```
 
 ## License

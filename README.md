@@ -8,11 +8,11 @@ This Python script generates Greek key meander patterns as SVG and PNG images.
 
 ### Rectangle
 
-![Meander Rectangle](https://raw.githubusercontent.com/bingqiao/greek_meander/refs/heads/master/meander_rectangle.png)
+![Meander Rectangle](https://raw.githubusercontent.com/bingqiao/greek_meander/refs/heads/master/images/meander_rectangle.png)
 
 ### Circle
 
-![Meander Circle](https://raw.githubusercontent.com/bingqiao/greek_meander/refs/heads/master/meander_circle.png)
+![Meander Circle](https://raw.githubusercontent.com/bingqiao/greek_meander/refs/heads/master/images/meander_circle.png)
 
 ## Description
 

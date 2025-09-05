@@ -4,7 +4,7 @@ import math
 
 class GreekKeyConfig:
     PATTERN_UNIT_SIZE = 5
-    def __init__(self, r_o, pattern_count, border_margin):
+    def __init__(self, r_o, pattern_count, border_margin, stroke_width):
         # r_a - "frame_gap" > 0 == PATTERN_UNIT_SIZE * n > 6*math.pi, so n >= 4
         r_a, r_b, r_c, r_d, r_e, r_o, r_i = get_radii_for_outer_radius(r_o, GreekKeyConfig.PATTERN_UNIT_SIZE*pattern_count)
         self.r_a = r_a        # Circle 1
@@ -17,13 +17,14 @@ class GreekKeyConfig:
         self.radius_inner = r_i
         self.border_margin = border_margin
         self.pattern_count = pattern_count
+        self.stroke_width = stroke_width
 
     def get_canvas_size(self):
-        offset = 2*self.radius_outer + 2*self.border_margin
+        offset = 2*self.radius_outer + 2*self.border_margin + 2*self.stroke_width
         return offset, offset
 
     def get_centre(self):
-        offset = self.border_margin + self.radius_outer
+        offset = self.border_margin + self.radius_outer + self.stroke_width
         return offset, offset
 
     def get_start_position(self, r):

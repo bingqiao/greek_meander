@@ -2,7 +2,7 @@ import drawsvg as draw
 import cairosvg
 
 class GreekKeyConfig:
-    def __init__(self, key_unit_length, width_units, height_units, border_margin):
+    def __init__(self, key_unit_length, width_units, height_units, border_margin, stroke_width):
         # The size of greek key unit
         self.key_unit_length = key_unit_length
         # Number of greek key units horizontally
@@ -11,27 +11,28 @@ class GreekKeyConfig:
         self.height_units = height_units
         self.key_pattern_length = self.key_unit_length * 5
         self.border_margin = border_margin
+        self.stroke_width = stroke_width
 
     def get_canvas_size(self):
-        width = self.width_units * self.key_pattern_length + 2 * self.border_margin + 2 * self.key_unit_length
-        height = self.height_units * self.key_pattern_length + 2 * self.border_margin + + 2 * self.key_unit_length
+        width = self.width_units * self.key_pattern_length + 2 * self.border_margin + 2 * self.key_unit_length + 2*self.stroke_width
+        height = self.height_units * self.key_pattern_length + 2 * self.border_margin + + 2 * self.key_unit_length + 2*self.stroke_width
         return width, height
 
     def get_start_position(self):
-        start_x = self.border_margin + self.key_unit_length
-        start_y = self.key_pattern_length + self.border_margin + self.key_unit_length
+        start_x = self.border_margin + self.key_unit_length + self.stroke_width
+        start_y = self.key_pattern_length + self.border_margin + self.key_unit_length + self.stroke_width
         return start_x, start_y
 
     def get_outer_frame_size(self):
-        outer_x = self.border_margin
-        outer_y = self.border_margin
+        outer_x = self.border_margin + self.stroke_width
+        outer_y = self.border_margin + self.stroke_width
         outer_width = self.width_units * self.key_pattern_length + 2 * self.key_unit_length
         outer_height = self.height_units * self.key_pattern_length + 2 * self.key_unit_length
         return outer_x, outer_y, outer_width, outer_height
 
     def get_inner_frame_size(self):
-        inner_x = 6 * self.key_unit_length + self.border_margin
-        inner_y = 6 * self.key_unit_length
+        inner_x = 6 * self.key_unit_length + self.border_margin + self.stroke_width
+        inner_y = 6 * self.key_unit_length + self.stroke_width
         inner_width = (self.width_units - 2) * self.key_pattern_length
         inner_height = (self.height_units - 2) * self.key_pattern_length
         return inner_x, inner_y, inner_width, inner_height

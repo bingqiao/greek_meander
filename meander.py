@@ -6,7 +6,7 @@ import meander_circle as circle
 def main():
     # Set up argument parser
     parser = argparse.ArgumentParser(description="Draw a Greek Key (Meander) SVG and PNG with customizable properties.")
-    parser.add_argument('--stroke-width', type=float, default=2.0, help="Line thickness in pixels (default: 2.0)")
+    parser.add_argument('--stroke-width', type=float, default=7.0, help="Line thickness in pixels (default: 2.0)")
     parser.add_argument('--stroke-color', type=str, default='#AB8E0E', help="Line color: name (e.g., 'red'), hex (e.g., '#FF0000'), or RGB (e.g., '255,0,0') (default: '#AB8E0E')")
     parser.add_argument('--stroke-opacity', type=float, default=0.7, help="Line transparency, 0.0 (transparent) to 1.0 (opaque) (default: 0.7)")
     parser.add_argument('--border-margin', type=int, default=1, help="The margin (>1) of borders (default: 3)")
@@ -29,10 +29,10 @@ def main():
     args = parser.parse_args()
     
     if args.type == 'rect':
-        config = rect.GreekKeyConfig(args.size, args.width, args.height, args.border_margin)
+        config = rect.GreekKeyConfig(args.size, args.width, args.height, args.border_margin, args.stroke_width)
 
     elif args.type == 'circle':
-        config = circle.GreekKeyConfig(args.radius, args.pattern_count, args.border_margin)
+        config = circle.GreekKeyConfig(args.radius, args.pattern_count, args.border_margin, args.stroke_width)
 
     else:
         parser.print_help()

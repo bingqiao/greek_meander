@@ -18,6 +18,22 @@ This Python script generates Greek key meander patterns as SVG and PNG images.
 
 The script uses the `drawsvg` library to create the pattern and `cairosvg` to convert it to a PNG image. The pattern's dimensions, colors, and other properties can be customized through command-line arguments.
 
+## Dependencies
+
+This package requires `cairosvg`, which in turn depends on the `cairo` C library. You may need to install `cairo` separately on your system.
+
+### macOS
+
+If you are using a Mac, you can install `cairo` using [Homebrew](https://brew.sh/):
+
+```bash
+brew install cairo
+```
+
+### Other Systems
+
+For other operating systems, please refer to the `cairo` website for installation instructions: https://www.cairographics.org/
+
 ## Installation
 
 You can install the package from PyPI:

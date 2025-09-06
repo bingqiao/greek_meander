@@ -2,6 +2,12 @@ import drawsvg as draw
 import cairosvg
 
 class GreekKeyConfig:
+    # Constants for drawing the meander pattern
+    UP = -1
+    DOWN = 1
+    LEFT = -1
+    RIGHT = 1
+
     def __init__(self, key_unit_length, width_units, height_units, border_margin, stroke_width):
         # The size of greek key unit
         self.key_unit_length = key_unit_length
@@ -130,9 +136,9 @@ class GreekKeyConfig:
         path.Z()
 
 
-    def generate_pattern_svg(config, stroke_width=2, stroke_color='black', stroke_opacity=1.0, filename='meander'):
+    def generate_pattern_svg(self, stroke_width=2, stroke_color='black', stroke_opacity=1.0, filename='meander'):
         """Generates the complete SVG drawing."""
-        width, height = config.get_canvas_size()
+        width, height = self.get_canvas_size()
         d = draw.Drawing(width, height, origin=(0, 0), displayInline=False)
         path = draw.Path(
             stroke=stroke_color,
@@ -142,7 +148,7 @@ class GreekKeyConfig:
             #stroke_linecap='square'
         )
 
-        config.draw_greek_key_unit(path)
+        self.draw_greek_key_unit(path)
 
         def draw_frame(path, x, y, w, h):
             """Draws a rectangular frame using a path."""
@@ -154,8 +160,8 @@ class GreekKeyConfig:
             path.Z()
 
         # Draw frames
-        draw_frame(path, *config.get_outer_frame_size())
-        draw_frame(path, *config.get_inner_frame_size())
+        draw_frame(path, *self.get_outer_frame_size())
+        draw_frame(path, *self.get_inner_frame_size())
 
         d.append(path)
         d.save_svg(f'{filename}.svg')
